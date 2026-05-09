@@ -1,5 +1,9 @@
+function httpTransportJsName(method, path) {
+    return method + "$" + path.replaceAll("/", "$");
+}
+
 export async function httpPost(path, data, cb) {
-    const name = path.replace(/\//g, "_");
+    const name = httpTransportJsName("POST", path);
     if (typeof window[name] === "function") {
         const result = JSON.parse(window[name](JSON.stringify(data)));
         if (cb) cb(result);

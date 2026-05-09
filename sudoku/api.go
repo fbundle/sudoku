@@ -40,6 +40,11 @@ func decode[T any](body []byte) (T, bool) {
 	return v, json.Unmarshal(body, &v) == nil
 }
 
+func encode(v any) []byte {
+	b, _ := json.Marshal(v)
+	return b
+}
+
 func getGame(store Store, key string) Game {
 	v := store.Get(key)
 	if v == nil {
@@ -50,7 +55,7 @@ func getGame(store Store, key string) Game {
 
 // RegisterRoutes registers all API routes on the given Router.
 func RegisterRoutes(r http_transport.Router, store Store, rnd *rand.Rand) {
-	r.POST("api/new", func(body []byte) (int, any) {
+	r.POST("api/new", func(body []byte) (int, []byte) {
 		bv, _ := decode[boardView](body)
 		board, ok := FromString(N, bv.Board)
 		intKey := rnd.Int()
@@ -63,18 +68,18 @@ func RegisterRoutes(r http_transport.Router, store Store, rnd *rand.Rand) {
 			return http.StatusBadRequest, nil
 		}
 		store.Set(key.Key, game)
-		return http.StatusOK, key
+		return http.StatusOK, encode(key)
 	})
 
-	r.POST("api/login", func(body []byte) (int, any) {
+	r.POST("api/login", func(body []byte) (int, []byte) {
 		kv, ok := decode[keyView](body)
 		if ok && store.Get(kv.Key) != nil {
-			return http.StatusOK, kv
+			return http.StatusOK, encode(kv)
 		}
 		return http.StatusBadRequest, nil
 	})
 
-	r.POST("api/view", func(body []byte) (int, any) {
+	r.POST("api/view", func(body []byte) (int, []byte) {
 		kv, ok := decode[keyView](body)
 		if !ok {
 			return http.StatusBadRequest, nil
@@ -83,10 +88,10 @@ func RegisterRoutes(r http_transport.Router, store Store, rnd *rand.Rand) {
 		if game == nil {
 			return http.StatusNotFound, nil
 		}
-		return http.StatusOK, game.View()
+		return http.StatusOK, encode(game.View())
 	})
 
-	r.POST("api/point", func(body []byte) (int, any) {
+	r.POST("api/point", func(body []byte) (int, []byte) {
 		pv, ok := decode[pointView](body)
 		if !ok {
 			return http.StatusBadRequest, nil
@@ -99,7 +104,7 @@ func RegisterRoutes(r http_transport.Router, store Store, rnd *rand.Rand) {
 		return http.StatusOK, nil
 	})
 
-	r.POST("api/place", func(body []byte) (int, any) {
+	r.POST("api/place", func(body []byte) (int, []byte) {
 		pv, ok := decode[placeView](body)
 		if !ok {
 			return http.StatusBadRequest, nil
@@ -112,7 +117,7 @@ func RegisterRoutes(r http_transport.Router, store Store, rnd *rand.Rand) {
 		return http.StatusOK, nil
 	})
 
-	r.POST("api/undo", func(body []byte) (int, any) {
+	r.POST("api/undo", func(body []byte) (int, []byte) {
 		kv, ok := decode[keyView](body)
 		if !ok {
 			return http.StatusBadRequest, nil
@@ -125,7 +130,7 @@ func RegisterRoutes(r http_transport.Router, store Store, rnd *rand.Rand) {
 		return http.StatusOK, nil
 	})
 
-	r.POST("api/implication", func(body []byte) (int, any) {
+	r.POST("api/implication", func(body []byte) (int, []byte) {
 		kv, ok := decode[keyView](body)
 		if !ok {
 			return http.StatusBadRequest, nil
@@ -138,15 +143,15 @@ func RegisterRoutes(r http_transport.Router, store Store, rnd *rand.Rand) {
 		return http.StatusOK, nil
 	})
 
-	r.POST("api/access", func(body []byte) (int, any) {
+	r.POST("api/access", func(body []byte) (int, []byte) {
 		kv, _ := decode[keyView](body)
 		store.Get(kv.Key)
 		return http.StatusOK, nil
 	})
 
-	r.POST("api/global_stats", func(body []byte) (int, any) {
-		return http.StatusOK, map[string]any{
+	r.POST("api/global_stats", func(body []byte) (int, []byte) {
+		return http.StatusOK, encode(map[string]any{
 			"number of active users": store.NumActiveKey(),
-		}
+		})
 	})
 }

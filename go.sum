@@ -1,4 +1,8 @@
 github.com/fbundle/http_transport v0.0.0-20260509183201-eac501729b1d h1:MiTxq0gRbcuuWf3o4KxvIRMXj+tjnX+EufiXWGZpwuA=
 github.com/fbundle/http_transport v0.0.0-20260509183201-eac501729b1d/go.mod h1:3oouHBpGiQ7VIIEtxn9o/2MXenORhGCTq0llzlKynO0=
+github.com/fbundle/http_transport v0.0.0-20260509185751-0891878cc5df h1:WJUVgf/jeO1cNPzGRgEuaLNTqCcDftWE96KNar+GD1M=
+github.com/fbundle/http_transport v0.0.0-20260509185751-0891878cc5df/go.mod h1:3oouHBpGiQ7VIIEtxn9o/2MXenORhGCTq0llzlKynO0=
+github.com/fbundle/http_transport v0.0.0-20260509192605-df1b86760daa h1:woQihb3FNRRihquMdvgLB9Ta/qa4IfJbnec/ZmZG29I=
+github.com/fbundle/http_transport v0.0.0-20260509192605-df1b86760daa/go.mod h1:3oouHBpGiQ7VIIEtxn9o/2MXenORhGCTq0llzlKynO0=
 github.com/irifrance/gini v1.0.1 h1:oTABiARLoRsnTmda0uY2u2e5kfm8e6meBZB19lf5xhE=
 github.com/irifrance/gini v1.0.1/go.mod h1:swH5OTtiG/X/YrU06r288qZwq6I1agpbuXQOB55xqGU=

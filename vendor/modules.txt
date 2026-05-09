@@ -1,0 +1,10 @@
+# github.com/fbundle/http_transport v0.0.0-20260509192605-df1b86760daa
+## explicit; go 1.26.3
+github.com/fbundle/http_transport/http_transport
+# github.com/irifrance/gini v1.0.1
+## explicit
+github.com/irifrance/gini
+github.com/irifrance/gini/dimacs
+github.com/irifrance/gini/inter
+github.com/irifrance/gini/internal/xo
+github.com/irifrance/gini/z
