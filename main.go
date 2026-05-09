@@ -1,21 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"github.com/khanh-nguyen-code/sudoku/gui"
+	"math/rand"
 	"time"
 
-	"github.com/gin-gonic/gin"
+	"github.com/fbundle/sudoku/sudoku"
 )
 
 func main() {
-	gin.SetMode(gin.ReleaseMode)
-
-	seed := int(time.Now().UnixNano())
-	portno := 3000
-	addr := fmt.Sprintf("0.0.0.0:%d", portno)
-	s := gui.NewServer(seed)
-	fmt.Printf("Server is up at: http://%s/sudoku/ \n", addr)
-	_ = s.Handler().Run(addr)
-	return
+	sudoku.ReduceBase(sudoku.N)
+	rnd := rand.New(rand.NewSource(time.Now().UnixNano()))
+	r, store, run := setup()
+	sudoku.RegisterRoutes(r, store, rnd)
+	run()
 }

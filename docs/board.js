@@ -1,3 +1,5 @@
+import {httpPost} from "./http_transport.js";
+
 function image_resize(img, size) {
     img.resize(size[0], size[1]);
     return img;
@@ -221,36 +223,23 @@ class Board {
 
     // request
     update_board(p5, cb) {
-        p5.httpPost("api/view", "json", {
-            key: this.key,
-        }, cb);
+        httpPost("api/view", {key: this.key}, cb);
     }
 
     point(p5, row, col, cb) {
-        p5.httpPost("api/point", "json", {
-            key: this.key,
-            row: row,
-            col: col,
-        }, cb);
+        httpPost("api/point", {key: this.key, row, col}, cb);
     }
 
     place(p5, val, cb) {
-        p5.httpPost("api/place", "json", {
-            key: this.key,
-            val: val,
-        }, cb);
+        httpPost("api/place", {key: this.key, val}, cb);
     }
 
     undo(p5, cb) {
-        p5.httpPost("api/undo", "json", {
-            key: this.key,
-        }, cb);
+        httpPost("api/undo", {key: this.key}, cb);
     }
 
     implication(p5, cb) {
-        p5.httpPost("api/implication", "json", {
-            key: this.key,
-        }, cb);
+        httpPost("api/implication", {key: this.key}, cb);
     }
 
     // util

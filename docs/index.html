@@ -2,6 +2,13 @@
 <head>
     <title>sudoku</title>
     <script src="./vendor/p5.js"></script>
+    <script src="./wasm_exec.js"></script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("sudoku.wasm"), go.importObject)
+            .then(r => go.run(r.instance))
+            .catch(() => {}); // ignored in remote HTTP mode
+    </script>
     <script type="module" src="./init.js"></script>
 </head>
 <body>
@@ -23,17 +30,17 @@
                     Some hard puzzles verified using: <a href="https://www.sudokuwiki.org/sudoku.htm">Sudoku Solver by Andrew Stuart</a>
                     <br>
                     (score: 000): <textarea readonly rows=1 cols=81></textarea>
-                    <br>                                           
+                    <br>
                     (score: 460): <textarea readonly rows=1 cols=81>060100500010030040840000007000009360300846700074000000200000080050000000007520009</textarea>
-                    <br>                                           
+                    <br>
                     (score: 463): <textarea readonly rows=1 cols=81>401006000000000923000030006010000000085000200700000304006008000900000480000520060</textarea>
                     <br>
                     (score: 493): <textarea readonly rows=1 cols=81>560040000000700003000095802030000200610200070002000600000006900000030000005800710</textarea>
-                    <br>                                           
+                    <br>
                     (score: 640): <textarea readonly rows=1 cols=81>000700089060000003005000260000500008001093040300000020700020006600300000009801400</textarea>
-                    <br>                                           
+                    <br>
                     (score: 681): <textarea readonly rows=1 cols=81>104780600800000500006300007000001000000000720650000901000800000000067000030200009</textarea>
-                    <br>                                           
+                    <br>
                     (score: 851): <textarea readonly rows=1 cols=81>602030000000070004000809020003007208000400009500000006000002003030600800804000900</textarea>
                     <br>
                     <br>

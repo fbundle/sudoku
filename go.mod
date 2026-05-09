@@ -1,9 +1,8 @@
-module github.com/khanh-nguyen-code/sudoku
+module github.com/fbundle/sudoku
 
-go 1.15
+go 1.26.3
 
 require (
-	github.com/gin-gonic/autotls v0.0.3
-	github.com/gin-gonic/gin v1.7.1
+	github.com/fbundle/http_transport v0.0.0-20260509183201-eac501729b1d
 	github.com/irifrance/gini v1.0.1
 )

@@ -2,7 +2,7 @@ package sudoku
 
 import (
 	"fmt"
-	"github.com/khanh-nguyen-code/sudoku/sat"
+	"github.com/fbundle/sudoku/sat"
 	"sync"
 )
 
