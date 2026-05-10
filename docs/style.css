@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background: #f0f0f0;
+    color: #222;
+    padding: 12px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+/* left column: canvas + buttons */
+#left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* right column: readme + controls */
+#right {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* on small screens, stack everything */
+@media (max-width: 600px) {
+    main {
+        flex-direction: column;
+    }
+    #right {
+        width: 100%;
+    }
+}
+
+/* on-screen keypad */
+#controls {
+    display: none;
+}
+
+#controls .numpad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+#controls .actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+#controls button {
+    font-size: 1.6em;
+    padding: 0.6em 0;
+    border: none;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+#controls button:active {
+    background: #e8e8e8;
+}
+
+/* readme section */
+#readme {
+    background: #fff;
+    border-radius: 8px;
+    padding: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+#readme b {
+    font-size: 1.1em;
+}
+
+#readme textarea {
+    font-size: 0.75em;
+    width: 100%;
+    resize: none;
+}
+
+/* game controls */
+#game-controls {
+    background: #fff;
+    border-radius: 8px;
+    padding: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#game-controls button {
+    padding: 8px 14px;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    background: #e8e8e8;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+#game-controls button:active {
+    background: #d0d0d0;
+}
+
+#game-controls textarea {
+    width: 100%;
+    font-size: 0.8em;
+    resize: none;
+}
+
+#timer {
+    font-weight: bold;
+}
+
+#message {
+    color: #c0392b;
+    font-weight: bold;
+    min-height: 1.2em;
+}

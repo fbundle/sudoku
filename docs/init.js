@@ -7,7 +7,10 @@ function setup(response) {
     document.getElementById("new_board").style.display = "none";
     document.getElementById("new_random").style.display = "none";
     document.getElementById("login_key").style.display = "none";
-    document.getElementById("controls").style.width = document.getElementById("p5canvas").offsetWidth + "px";
+    const canvas = document.getElementById("p5canvas");
+    const controls = document.getElementById("controls");
+    controls.style.display = "block";
+    controls.style.width = canvas.offsetWidth + "px";
 }
 
 function login_random() {

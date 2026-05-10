@@ -1,6 +1,8 @@
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>sudoku</title>
+    <link rel="stylesheet" href="./style.css">
     <script src="./vendor/p5.js"></script>
     <script src="./wasm_exec.js"></script>
     <script>
@@ -13,73 +15,58 @@
 </head>
 <body>
 <main>
-        <table style="width: 100%">
-            <tr>
-                <td style="vertical-align:top">
-                    <div id="p5canvas"></div>
-                    <div id="controls" style="display:block;margin-top:8px">
-                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:6px">
-                            <button class="num-btn" data-val="1" style="font-size:2em;padding:3.2em 0.4em">1</button>
-                            <button class="num-btn" data-val="2" style="font-size:2em;padding:3.2em 0.4em">2</button>
-                            <button class="num-btn" data-val="3" style="font-size:2em;padding:3.2em 0.4em">3</button>
-                            <button class="num-btn" data-val="4" style="font-size:2em;padding:3.2em 0.4em">4</button>
-                            <button class="num-btn" data-val="5" style="font-size:2em;padding:3.2em 0.4em">5</button>
-                            <button class="num-btn" data-val="6" style="font-size:2em;padding:3.2em 0.4em">6</button>
-                            <button class="num-btn" data-val="7" style="font-size:2em;padding:3.2em 0.4em">7</button>
-                            <button class="num-btn" data-val="8" style="font-size:2em;padding:3.2em 0.4em">8</button>
-                            <button class="num-btn" data-val="9" style="font-size:2em;padding:3.2em 0.4em">9</button>
-                        </div>
-                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
-                            <button id="btn-clear" style="font-size:2em;padding:3.2em 0.4em">X</button>
-                            <button id="btn-hint" style="font-size:2em;padding:3.2em 0.4em">H</button>
-                            <button id="btn-undo" style="font-size:2em;padding:3.2em 0.4em">U</button>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <b>README</b>
-                    <br>
-                    1. Randomize Board and Play: (Hardness is random)
-                    <br>
-                    2. Paste your Board and Play: (Board is a row-major string of numbers, 81 numbers)
-                    <br>
-                    3. Join game with your friends using Room ID
-                    <br>
-                    <br>
-                    <br>
-                    Some hard puzzles verified using: <a href="https://www.sudokuwiki.org/sudoku.htm">Sudoku Solver by Andrew Stuart</a>
-                    <br>
-                    (score: 000): <textarea readonly rows=1 cols=81></textarea>
-                    <br>
-                    (score: 460): <textarea readonly rows=1 cols=81>060100500010030040840000007000009360300846700074000000200000080050000000007520009</textarea>
-                    <br>
-                    (score: 463): <textarea readonly rows=1 cols=81>401006000000000923000030006010000000085000200700000304006008000900000480000520060</textarea>
-                    <br>
-                    (score: 493): <textarea readonly rows=1 cols=81>560040000000700003000095802030000200610200070002000600000006900000030000005800710</textarea>
-                    <br>
-                    (score: 640): <textarea readonly rows=1 cols=81>000700089060000003005000260000500008001093040300000020700020006600300000009801400</textarea>
-                    <br>
-                    (score: 681): <textarea readonly rows=1 cols=81>104780600800000500006300007000001000000000720650000901000800000000067000030200009</textarea>
-                    <br>
-                    (score: 851): <textarea readonly rows=1 cols=81>602030000000070004000809020003007208000400009500000006000002003030600800804000900</textarea>
-                    <br>
-                    <br>
-                    <br>
-                    <button id="new_random">Play with random Board</button>
-                    <br>
-                    <b>Board: </b><textarea id="board" rows=1 cols=81></textarea>
-                    <br>
-                    <button id="new_board">Play with Board</button>
-                    <br>
-                    <b>Room ID: </b><textarea id="key" rows=1 cols=20></textarea>
-                    <br>
-                    <button id="login_key">Login with Room ID</button>
-                    <br>
-                    <div id="timer"></div>
-                    <b>Message: </b><div id="message"></div>
-                </td>
-            </tr>
-        </table>
-    </main>
+    <div id="left">
+        <div id="p5canvas"></div>
+        <div id="controls">
+            <div class="numpad">
+                <button class="num-btn" data-val="1">1</button>
+                <button class="num-btn" data-val="2">2</button>
+                <button class="num-btn" data-val="3">3</button>
+                <button class="num-btn" data-val="4">4</button>
+                <button class="num-btn" data-val="5">5</button>
+                <button class="num-btn" data-val="6">6</button>
+                <button class="num-btn" data-val="7">7</button>
+                <button class="num-btn" data-val="8">8</button>
+                <button class="num-btn" data-val="9">9</button>
+            </div>
+            <div class="actions">
+                <button id="btn-clear">X</button>
+                <button id="btn-hint">H</button>
+                <button id="btn-undo">U</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="right">
+        <div id="readme">
+            <b>README</b><br><br>
+            1. Randomize Board and Play: (Hardness is random)<br>
+            2. Paste your Board and Play: (Board is a row-major string of numbers, 81 numbers)<br>
+            3. Join game with your friends using Room ID<br><br>
+            Some hard puzzles verified using: <a href="https://www.sudokuwiki.org/sudoku.htm">Sudoku Solver by Andrew Stuart</a><br><br>
+            (score: 000): <textarea readonly rows=1>000000000000000000000000000000000000000000000000000000000000000000000000000000000</textarea>
+            (score: 460): <textarea readonly rows=1>060100500010030040840000007000009360300846700074000000200000080050000000007520009</textarea>
+            (score: 463): <textarea readonly rows=1>401006000000000923000030006010000000085000200700000304006008000900000480000520060</textarea>
+            (score: 493): <textarea readonly rows=1>560040000000700003000095802030000200610200070002000600000006900000030000005800710</textarea>
+            (score: 640): <textarea readonly rows=1>000700089060000003005000260000500008001093040300000020700020006600300000009801400</textarea>
+            (score: 681): <textarea readonly rows=1>104780600800000500006300007000001000000000720650000901000800000000067000030200009</textarea>
+            (score: 851): <textarea readonly rows=1>602030000000070004000809020003007208000400009500000006000002003030600800804000900</textarea>
+        </div>
+
+        <div id="game-controls">
+            <button id="new_random">Play with random Board</button>
+            <div>
+                <b>Board: </b><textarea id="board" rows=1></textarea>
+            </div>
+            <button id="new_board">Play with Board</button>
+            <div>
+                <b>Room ID: </b><textarea id="key" rows=1></textarea>
+            </div>
+            <button id="login_key">Login with Room ID</button>
+            <div id="timer"></div>
+            <div><b>Message: </b><span id="message"></span></div>
+        </div>
+    </div>
+</main>
 </body>
 </html>
