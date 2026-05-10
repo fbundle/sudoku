@@ -5,7 +5,7 @@ Simple sudoku solver and unique-solution sudoku generator using gini sat solver.
 ## Features
 
 - Unique-solution board generation via SAT solver
-- Implication hint (finds a cell that can be logically deduced)
+- Implication hint (finds a cell that can be deduced without branching)
 - Undo
 - Web interface
 
