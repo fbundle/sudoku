@@ -2,6 +2,8 @@
 
 Simple sudoku solver and unique-solution sudoku generator using gini sat solver.
 
+wasm backend [https://fbundle.github.io/sudoku](https://fbundle.github.io/sudoku/)
+
 ## Features
 
 - Unique-solution board generation via SAT solver
