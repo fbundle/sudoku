@@ -15,7 +15,27 @@
 <main>
         <table style="width: 100%">
             <tr>
-                <td><div id="p5canvas"></div></td>
+                <td style="vertical-align:top">
+                    <div id="p5canvas"></div>
+                    <div id="controls" style="display:block;margin-top:8px">
+                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:6px">
+                            <button class="num-btn" data-val="1" style="font-size:2em;padding:3.2em 0.4em">1</button>
+                            <button class="num-btn" data-val="2" style="font-size:2em;padding:3.2em 0.4em">2</button>
+                            <button class="num-btn" data-val="3" style="font-size:2em;padding:3.2em 0.4em">3</button>
+                            <button class="num-btn" data-val="4" style="font-size:2em;padding:3.2em 0.4em">4</button>
+                            <button class="num-btn" data-val="5" style="font-size:2em;padding:3.2em 0.4em">5</button>
+                            <button class="num-btn" data-val="6" style="font-size:2em;padding:3.2em 0.4em">6</button>
+                            <button class="num-btn" data-val="7" style="font-size:2em;padding:3.2em 0.4em">7</button>
+                            <button class="num-btn" data-val="8" style="font-size:2em;padding:3.2em 0.4em">8</button>
+                            <button class="num-btn" data-val="9" style="font-size:2em;padding:3.2em 0.4em">9</button>
+                        </div>
+                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+                            <button id="btn-clear" style="font-size:2em;padding:3.2em 0.4em">X</button>
+                            <button id="btn-hint" style="font-size:2em;padding:3.2em 0.4em">H</button>
+                            <button id="btn-undo" style="font-size:2em;padding:3.2em 0.4em">U</button>
+                        </div>
+                    </div>
+                </td>
                 <td>
                     <b>README</b>
                     <br>

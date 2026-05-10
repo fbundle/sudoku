@@ -7,6 +7,7 @@ function setup(response) {
     document.getElementById("new_board").style.display = "none";
     document.getElementById("new_random").style.display = "none";
     document.getElementById("login_key").style.display = "none";
+    document.getElementById("controls").style.width = document.getElementById("p5canvas").offsetWidth + "px";
 }
 
 function login_random() {
@@ -29,3 +30,10 @@ function login_board() {
 document.querySelector("#new_random").addEventListener("click", login_random);
 document.querySelector("#new_board").addEventListener("click", login_board);
 document.querySelector("#login_key").addEventListener("click", login_key);
+
+document.querySelectorAll(".num-btn").forEach(btn => {
+    btn.addEventListener("click", () => game.place(null, parseInt(btn.dataset.val), () => {}));
+});
+document.getElementById("btn-clear").addEventListener("click", () => game.place(null, 0, () => {}));
+document.getElementById("btn-undo").addEventListener("click", () => game.undo(null, () => {}));
+document.getElementById("btn-hint").addEventListener("click", () => game.implication(null, () => {}));
